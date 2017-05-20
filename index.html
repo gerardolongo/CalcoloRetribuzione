@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elegant Contact Form</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+  </head>
+  <body ng-app = "appModule" ngcloak>
+    <h1>Validazione retribuzione</h1>
+    <form class="cf" ng-controller="mainController" name ="form">
+        <div id="fabButton">
+          <md-button class="md-fab md-primary" ng-click="resetForm()">
+            Reset
+          </md-button>
+        </div>
+        <div class="half left cf" >
+          <table>
+            <tr>
+              <td>
+                <input type="number"  step="0.01" id="IVS2016" placeholder="IVS2016" ng-model="IVS2016" ng-disabled="flagIVS2016" >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <input type="number"  step="0.01" id="IVS2017" placeholder="IVS2017" ng-model="IVS2017" ng-disabled="flagIVS2017" >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="number" step="0.01" id="IVS2018" placeholder="IVS2018" ng-model="IVS2018" ng-disabled="flagIVS2018" >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <input type="number" step="0.01" id="retrTeoMensile" placeholder="Retribuzione mensile" ng-model="retrTeoMensile" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="number" min="0.40" max="0.60" step="0.01" id="percPartTime" placeholder="Percentuale Part-Time" ng-model="percPartTime" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="number" min="12" max="15" id="numMensilita" placeholder="Numero Mensilita" ng-model="numMensilita" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="date" id="dataRetrMensile" placeholder="Data retribuzione teorica mensile" ng-model="dataRetrMensile" ng-change="change()" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                &nbsp
+              </td>
+            </tr>
+          </table>
+          <input type="submit" value="Submit" id="input-submit"  ng-click="executeFunction()" ng-disabled="form.$invalid"/>
+          <br/>
+          <label for="result"> Totale: {{result}} </label>
+        </div>
+    </form>
+    <script type="text/javascript" src="script/app.js"></script>
+    <script type="text/javascript" src="script/controller/controller.js"></script>
+    <script type="text/javascript" src="script/service/calcRetrService.js"></script>
+    <script type="text/javascript" src="script/service/calcNumMesiBeneficioService.js"></script>
+  </body>
+</html>
